@@ -13,7 +13,3 @@
 .signup_page_form_1, .signup_page_form_2{
     transition: all .5s; 
 }
-
-/* .signup_page_form_1,.signup_page_form_2{
-    transform: translateX(-100%);
-} */

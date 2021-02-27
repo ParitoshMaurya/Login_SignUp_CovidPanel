@@ -23,12 +23,14 @@
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- BootStrap Files  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="../css/intlTelInput.css">
+    <!-- intlTelInput CSS  -->
+    <link rel="stylesheet" href="https://intl-tel-input.com/node_modules/intl-tel-input/build/css/intlTelInput.css?40">
     <!-- Poppins Font  -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
@@ -40,6 +42,7 @@
 
 <body>
     <script>
+        // To Return To Covid Panel if Any Account is LoggedIn
         if(localStorage.getItem('loginAcc')) window.location.href = '../pages/covid-portal.html';
     </script>
     <header>
@@ -188,7 +191,7 @@
     </footer>
 
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-    <script src="../js/intlTelInput.js"></script>
+    <script src="https://intl-tel-input.com/node_modules/intl-tel-input/build/js/intlTelInput.js?71"></script>
     <script src="../js/form_validator.js"></script>
     <script src="../js/helper_functions.js"></script>
     <script src="../js/signup_page.js"></script>
