@@ -8,11 +8,11 @@ const login_error_box = document.querySelector('#error--submit-msg--login--form'
 const accLogin = function(account_obj){
     localStorage.setItem('loginAcc',JSON.stringify(account_obj));
     window.location.href='../pages/covid-portal.html';    
-}
+};
 // To Save Details for Remember On Account
 const rememberAccount = function(account_obj){
     localStorage.setItem('saved_account',JSON.stringify(account_obj));
-}
+};
 
 // A function To Run on Page Load and Load Saved Accounts If Present
 const onpageLoad = function(){
@@ -22,7 +22,7 @@ const onpageLoad = function(){
     email_field.value = saved_acc_obj.loginMail;
     pass_field.value  = saved_acc_obj.loginPassword;
     check_box.setAttribute('checked','');
-}
+};
 onpageLoad();
 
 // To check whether Entered Password Matches for The Account
@@ -41,7 +41,7 @@ email_field.addEventListener('blur',function(){
     if(email_validator(mail_ID)){
         isValid_Adder(this);
     }else isInvalid_Adder(this);
-})
+});
 
 // On Submit the Login Form
 login_form.addEventListener('submit',function(e){
@@ -56,10 +56,10 @@ login_form.addEventListener('submit',function(e){
             rememberAccount(form_details); // To Remember The User
         }else{
             error_render(login_error_box,'Try to Enter Right Password');
-        }
+        };
 
     }else{
         error_render(login_error_box,"Email Isn't Registered Yet");
-    }
+    };
 
-})
+});
