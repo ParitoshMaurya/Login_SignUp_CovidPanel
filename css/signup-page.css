@@ -1,0 +1,19 @@
+.main__body{
+    padding-top: 90px;
+    padding-bottom: 65px;
+}
+.profile_pic_input{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+.all_forms__sliding{
+    overflow: hidden;
+}
+.signup_page_form_1, .signup_page_form_2{
+    transition: all .5s; 
+}
+
+/* .signup_page_form_1,.signup_page_form_2{
+    transform: translateX(-100%);
+} */

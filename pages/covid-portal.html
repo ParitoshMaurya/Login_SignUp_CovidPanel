@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Covid Info Panel | Daily Tracker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Poppins Font  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- CSS Files  -->
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/covid_portal.css">
+    
+</head>
+
+<body>
+    <script>
+        if(!localStorage.getItem('loginAcc')) window.location.href = '../pages/login.html';
+    </script>
+    <header>
+        <div class="header--body bg-dark fixed-top">
+            <div class="col-12">
+                <div class="row justify-content-between py-2">
+                    <div class="col-auto pointer--cursor">
+                        <img src="../images/fingerprint.svg" class="ico-size">
+                    </div>
+                    <div class="col-auto text-white pointer--cursor d-flex">
+                        <div class="account-info" data-toggle="tooltip" data-placement="bottom" title="">
+                                
+                        </div>
+                        <div class="logout__feature ml-3" onclick="logOutUser()">
+                            <img src="../images/logout.svg" class="ico-size"> Logout
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main-body">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-3 selected_states--col">
+                    <div class="selected_states_panel">
+                        <div class="title_panel"><h4>Select States</h4></div>
+                        <form class="covid_state_names">
+                            <div class="states__list overflow-auto pt-3"> 
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="col-12">
+                        <div class="stat_detail_comp overflow-auto d-flex">
+                            <div class="box_container pointer--cursor">
+                                <div class="box text-center">
+                                    <div class="box_heading">SELECTED STATES</div>
+                                    <div class="box_content count" id="state--selected">0</div>
+                                </div>
+                            </div>
+                            <div class="box_container pointer--cursor">
+                                <div class="box text-center">
+                                    <div class="box_heading">TESTED</div>
+                                    <div class="box_content count" id="tested--num">0</div>
+                                </div>
+                            </div>
+                            <div class="box_container pointer--cursor">
+                                <div class="box text-center">
+                                    <div class="box_heading">CONFIRMED</div>
+                                    <div class="box_content count" id="confirmed--num">0</div>
+                                </div>
+                            </div>
+                            <div class="box_container pointer--cursor">
+                                <div class="box text-center">
+                                    <div class="box_heading">RECOVERED</div>
+                                    <div class="box_content count" id="recovered--num">0</div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="graphical_rep pt-3">
+                            <h3 class="text-center">
+                                Graphical Represenation
+                            </h3>
+                        </div>
+                        <div class="col-12 p-0">
+                            <div class="state__progress__box overflow-auto">
+                        
+                                                           
+                            </div>
+                        </div>
+                        
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer-site fixed-bottom">
+        <div class="bg-warning w-100 ">
+            <div class="col-12">
+                <div class="copyright-disclaimer-box text-center py-3">
+                    Copyright © 2021. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/covid_portal.js"></script>
+   
+
+
+</body>
+
+</html>

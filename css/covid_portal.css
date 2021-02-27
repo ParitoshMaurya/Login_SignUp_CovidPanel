@@ -1,0 +1,65 @@
+.main-body{
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+.states__list{
+    max-height: 73vh;
+}
+.box_container{
+    min-width: 14rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.box{
+    border: 2px solid lightblue;
+    border-radius: 2rem;
+    padding: .5rem 0;
+    height: 100%;
+    transition: all .5s;
+    transform: scale(1);
+}
+.box:hover{
+    border: none;
+    color: white;
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+    transform: scale(.9);
+    
+}
+.box_heading{
+    font-size: .9rem;
+    font-weight: 500;
+}
+.box_content{
+    font-size: 1.5rem;
+    padding-top: 1rem;
+}
+.box_content#state--selected{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.states__list::-webkit-scrollbar, .state__progress__box::-webkit-scrollbar {
+    width: 8px;              /* width of the entire scrollbar */
+  }
+  
+.states__list::-webkit-scrollbar-track, .state__progress__box::-webkit-scrollbar-track {
+    background: white;        /* color of the tracking area */
+}
+.states__list::-webkit-scrollbar-track:hover, .state__progress__box::-webkit-scrollbar-track:hover {
+    background: orange;        /* color of the tracking area */
+}
+  
+.states__list::-webkit-scrollbar-thumb, .state__progress__box::-webkit-scrollbar-thumb {
+    background-color: blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid orange;  /* creates padding around scroll thumb */
+}
+.progress__component .state--name{
+    font-size: .6rem;
+    text-align: right;
+}
+.progress__component{
+    padding-bottom: .7rem;
+}
+.state__progress__box{
+    max-height: 50vh;
+}
