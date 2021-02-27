@@ -32,6 +32,8 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
 //----------------------------------------
+
+// To Fetch Data From API and Generate CheckBox As per StateCode
 (async function(){
     let res = await fetch(api);
     covid_JSON_DATA = await res.json();
@@ -46,18 +48,21 @@ $(function () {
                 <label for="${state}" class="ml-2">${state}</label>
             </div> 
             `); });
-        
     };
     stateListGen(state_code_arr);
     Confirmed_N_RecoveredShow();
     graphGenerator();
-
     animateNum();
     
 })() // This is Immediate Invoke Function to Fetch Data From API and Generate Markup
+
+
+// This is Function to set the Value To Display 
 function displayNumSet(HTMLElememt, Value){
     HTMLElememt.innerHTML = Value;
-}
+};
+
+// A Snippet to Animate The Numbers
 function animateNum(){
     $('.count').each(function () {
         $(this).prop('Counter',0).animate({
@@ -70,7 +75,8 @@ function animateNum(){
             }
         });
     });
-}
+};
+
 function StateNumshow(){ //A functon To Show Number of states Selected
     let selectedStatesArr = [...new FormData(covid_state_list_form)];
     let selectedStatesNum = selectedStatesArr.length;
@@ -114,14 +120,19 @@ function Confirmed_N_RecoveredShow(){ // A funtiion to get total recovered and c
     displayNumSet(testedNumHTML, totalDeceased + totalRecovered + totalConfirmed);
 };
 
+// On checking on unchecking Any State from the Selected States
 covid_state_list_form.addEventListener('change',function(){
-    Confirmed_N_RecoveredShow()
+    Confirmed_N_RecoveredShow();
     graphGenerator();
-})
+});
+
+// To LogOut The Current User
 function logOutUser(){
     localStorage.setItem('loginAcc','');
     window.location.href = '../index.html';
-}
+};
+
+// A Function to Generate the Graph Markup 
 function graphGenerator(){
     stateProgressBox.innerHTML='';
     let selectedState = StateNumshow().map(arr => arr[0]);
@@ -140,7 +151,6 @@ function graphGenerator(){
                     </div>
                 </div>
             `);   
-        }
-    })
-
-}
+        };
+    });
+};

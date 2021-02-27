@@ -14,7 +14,7 @@ const error_box_form_2 = document.querySelector('#error--submit-msg--form--2');
 const register_form_error_box = document.querySelector('#error--submit-msg--register--form');
 let account_obj;
 
-
+// To Save the Signed Up Details In Local Storage
 const LocalStorageSaver = function(acc_obj){
   if(localStorage.getItem('account_detail')==null){
     let account_array = [];
@@ -24,12 +24,12 @@ const LocalStorageSaver = function(acc_obj){
      let account_array = JSON.parse(localStorage.getItem('account_detail'));
      account_array.push(acc_obj);
      localStorage.setItem('account_detail',JSON.stringify(account_array));
-}}
+}};
 
 
 
 
-// Blur Events For Forms ------------------------------------------
+// Blur Events Validation For Forms ------------------------------------------
 
 let input_arr =[first_name_input,last_name_input];
 input_arr.forEach(name=>{
@@ -50,7 +50,7 @@ email_input.addEventListener('blur',function(){
     isValid_Adder(this);
   }else{
     isInvalid_Adder(this);
-  }
+  };
 });
 
 D_O_B_input.addEventListener('blur',function(){
@@ -63,7 +63,6 @@ D_O_B_input.addEventListener('blur',function(){
 
 first_password.addEventListener('blur',function(){
   let pass_value = this.value;
-
   if(password_validator(pass_value)) isValid_Adder(this);
   else isInvalid_Adder(this);
 });
@@ -82,12 +81,12 @@ const first_form_validator = function(details_obj){
   if(!name_validator(details_obj.lastName)) return false;
   if(!DOB_Validator(details_obj.dateOfBirth)) return false;
   if(!email_validator(details_obj.emailID)) return false;
-  if(emailIDexists(details_obj.emailID)){
+  if(emailIDexists(details_obj.emailID)){ //If Mail Already Exists
     isInvalid_Adder(email_input);
     emailExistsFlag=true
     error_render(error_box_form_1,'This Mail Already Exists');
     return false;
-  }
+  };
   if(!password_validator(details_obj.oncePass)) return false;
   if(!confirm_password_validator(details_obj.confirmPass)) return false;
   return true;
@@ -99,15 +98,13 @@ first_form.addEventListener('submit',function(e){
     const form_details = Object.fromEntries(form_details_Arr);
     if(first_form_validator(form_details)){
       account_obj = Object.assign(form_details);
-      console.log(account_obj);
+      // To Slide To Second Form of SignUp Page
       this.style.transform = "translateX(-100%)";
       second_form.style.transform = "translateX(-100%)";
     }else{
       if(!emailExistsFlag) error_render(error_box_form_1,'Please Fill The Form Carefully');
-    }
-    
-    
-})
+    };
+});
 
 
 
@@ -128,7 +125,7 @@ let reset = function() {
     errorMsg.innerHTML = "";
     errorMsg.classList.add("hide");
     validMsg.classList.add("hide");
-  };
+};
   
   // on blur: validate
 input.addEventListener('blur', function() {
@@ -141,13 +138,13 @@ input.addEventListener('blur', function() {
       let errorCode = iti.getValidationError();
       errorMsg.innerHTML = errorMap[errorCode];
       errorMsg.classList.remove("hide");
-    }
-  }
-  });
+    };
+  };
+});
   
   // on keyup / change flag: reset
-  input.addEventListener('change', reset);
-  input.addEventListener('keyup', reset);
+input.addEventListener('change', reset);
+input.addEventListener('keyup', reset);
 
 
 
@@ -163,7 +160,7 @@ function initAutocomplete() {
   autocomplete = new google.maps.places.Autocomplete(address_input, { types: ["geocode"] });
   autocomplete.setFields(["address_component"]);
   autocomplete.addListener("place_changed", fillInAddress);
-}
+};
 
 // To Fill The Pincde If Available 
 function fillInAddress(){
@@ -171,12 +168,12 @@ function fillInAddress(){
   let zip_code;
   place.address_components.forEach((elem,index)=>{
     if (elem.types.includes('postal_code')) zip_code = elem.short_name;
-  })
+  });
   pincode_input.value = '';
   if(!zip_code) return;
   pincode_input.value = zip_code;
   pincode_input.removeAttribute('disabled');
-}
+};
 // Function to Make the Address Search Near The GeoLocation 
 function geolocate() {
   if (navigator.geolocation) {
@@ -191,19 +188,19 @@ function geolocate() {
       });
       autocomplete.setBounds(circle.getBounds());
     });
-  }
-}
+  };
+};
 
 //-------------------------------------------------------------
 
+// A Function To Validate Details Of Second Form
 const second_form_validator = function(detail_obj){
   if(!iti.isValidNumber()) return false; 
   if(detail_obj.addressInfo.length<4) return false;
   return true;
+};
 
-
-}
-
+// Event Listener on Second Form Submit
 second_form.addEventListener('submit',function(e){
   e.preventDefault();
   const form_details_Arr = [...new FormData(this)];
