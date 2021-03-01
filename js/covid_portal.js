@@ -92,26 +92,28 @@ function Confirmed_N_RecoveredShow(){ // A funtiion to get total recovered and c
     for(let state in covid_JSON_DATA){
         let stateWiseCnfrm = 0; // For StateWise Data
         let stateWiseRecvr = 0; // For StateWise Data
+        let stateWiseActive = 0; // For StateWise Data
+        let stateWiseDeceased = 0; // For StateWise Data
         let districtData = covid_JSON_DATA[state]['districtData'];
         for (let district in districtData){
             let districtCovidDetails = districtData[district];
             if(selectedState.includes(covid_JSON_DATA[state].statecode)){
-                stateWiseCnfrm+= districtCovidDetails.confirmed;
-                stateWiseRecvr+= districtCovidDetails.recovered;
                 totalConfirmed+= districtCovidDetails.confirmed;
                 totalRecovered+= districtCovidDetails.recovered;
-                totalDeceased+= districtCovidDetails.deceased; }
-            else{
-                stateWiseCnfrm+= districtCovidDetails.confirmed;
-                stateWiseRecvr+= districtCovidDetails.recovered;
-            };};
+                totalDeceased+= districtCovidDetails.deceased; };
+            stateWiseCnfrm+= districtCovidDetails.confirmed;
+            stateWiseRecvr+= districtCovidDetails.recovered;
+            stateWiseActive+= districtCovidDetails.active;
+            stateWiseDeceased+= districtCovidDetails.deceased;
+            };
         // Calculating Percentage As per State
-        let stateWiseTotal = stateWiseCnfrm + stateWiseRecvr;
-        let stateWiseCnfrmPercentage = (stateWiseCnfrm / stateWiseTotal)*100 || 0;
+        let stateWiseTotal = stateWiseCnfrm + stateWiseRecvr + stateWiseActive + stateWiseDeceased;
+        let stateWiseActivePercentage = (stateWiseActive / stateWiseTotal)*100 || 0;
         let stateWiseRecvrPercentage = (stateWiseRecvr / stateWiseTotal)*100 || 0;
+        let stateWiseDeceasedPercentage = (stateWiseDeceased / stateWiseTotal)*100 || 0;
         // Created An Array containing State Name and Confirm and Recover Data in % and with State Code
         state_wise_percentageArr.push([
-            state,[stateWiseCnfrmPercentage, stateWiseRecvrPercentage],covid_JSON_DATA[state].statecode
+            state,[stateWiseActivePercentage, stateWiseRecvrPercentage, stateWiseDeceasedPercentage],covid_JSON_DATA[state].statecode
         ]);
 
         };
@@ -145,8 +147,8 @@ function graphGenerator(){
                     </div>
                     <div class="col-9">
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: ${StateArr[1][0]}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                            <div class="progress-bar bg-success" role="progressbar" style="width: ${StateArr[1][1]}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: ${StateArr[1][0]}%" aria-valuenow="${StateArr[1][0]}" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-success" role="progressbar" style="width: ${StateArr[1][1]}%" aria-valuenow="${StateArr[1][1]}" aria-valuemin="0" aria-valuemax="100"></div> <div class="progress-bar bg-dark" role="progressbar" style="width: ${StateArr[1][2]}%" aria-valuenow="${StateArr[1][2]}" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
