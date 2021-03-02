@@ -13,6 +13,13 @@ const accLogin = function(account_obj){
 const rememberAccount = function(account_obj){
     localStorage.setItem('saved_account',JSON.stringify(account_obj));
 };
+const removeRememberAccount = function(account_obj){
+    const savedAcc = JSON.parse(localStorage.getItem('saved_account'));
+    if(!savedAcc) return;
+    if(savedAcc.loginMail===account_obj.loginMail){
+        localStorage.setItem('saved_account','');
+    };
+};
 
 // A function To Run on Page Load and Load Saved Accounts If Present
 const onpageLoad = function(){
@@ -52,7 +59,9 @@ login_form.addEventListener('submit',function(e){
         let user_valid = pass_n_Email_Match(form_details.loginMail,form_details.loginPassword);
         if(user_valid){
             accLogin(form_details); // To Login and Save Details
-            if(!form_details.remember) return; // If user checked Remember Me
+            if(!form_details.remember) {
+                removeRememberAccount(form_details);
+                return;} // If user checked Remember Me
             rememberAccount(form_details); // To Remember The User
         }else{
             error_render(login_error_box,'Try to Enter Right Password');
