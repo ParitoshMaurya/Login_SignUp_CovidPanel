@@ -6,3 +6,8 @@
     width: 1.5rem;
     height: 1.5rem;
 }
+.second_container{
+    box-shadow: #00000052 2px 1px 10px;
+    border-radius: 2rem;
+    padding: 20px;
+}
